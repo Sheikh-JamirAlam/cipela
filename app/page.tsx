@@ -1,5 +1,5 @@
-import Image from "next/image";
 import HeroText from "./components/HeroText";
+import HeroImage from "./components/HeroImage";
 
 export default function Home() {
   return (
@@ -7,7 +7,7 @@ export default function Home() {
       <main>
         <section className="flex justify-center items-center">
           <HeroText />
-          <Image className="absolute" src="/images/hero-shoe.png" width={800} height={800} alt="Hero Shoe" />
+          <HeroImage />
         </section>
         <section className="h-screen"></section>
       </main>
