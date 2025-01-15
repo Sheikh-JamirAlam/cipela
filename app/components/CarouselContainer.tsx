@@ -6,16 +6,16 @@ import Carousel from "./Carousel";
 import { Arrow } from "./Icons";
 
 export default function CarouselContainer() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" }, [Autoplay({ playOnInit: true, delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ playOnInit: true, delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })]);
 
   return (
-    <div className="max-w-full w-full m-auto flex items-center">
+    <div className="max-w-full m-auto flex items-center">
       <button
         onClick={() => {
           emblaApi?.scrollPrev();
         }}
         aria-label="Pervious button, click to see the other features"
-        className={`w-10 h-10 md:w-14 md:h-14 mt-auto flex justify-center items-center text-xl bg-opacity-50 bg-light-black hover:bg-opacity-75 hover:bg-light-grey transition-all rounded-full absolute left-16 z-40`}
+        className={`w-8 h-8 flex justify-center items-center text-lg bg-neutral-50 hover:bg-opacity-75 hover:bg-light-grey transition-all rounded-full absolute left-16 z-40`}
       >
         <Arrow />
       </button>
@@ -24,11 +24,11 @@ export default function CarouselContainer() {
           emblaApi?.scrollNext();
         }}
         aria-label="Next button, click to see the other features"
-        className={`w-10 h-10 md:w-14 md:h-14 mt-auto flex justify-center items-center text-xl bg-opacity-50 bg-light-black hover:bg-opacity-75 hover:bg-light-grey transition-all rounded-full absolute right-16 z-40`}
+        className={`w-8 h-8 flex justify-center items-center text-lg bg-neutral-50 hover:bg-opacity-75 hover:bg-light-grey transition-all rounded-full absolute right-16 z-40`}
       >
         <Arrow className="rotate-180" />
       </button>
-      <div ref={emblaRef} className="px-6 md:px-20 xl:px-48 overflow-hidden">
+      <div ref={emblaRef} className="overflow-hidden">
         <div className="ml-[-1rem] md:ml-[-2.5rem] flex touch-pan-y touch-pinch-zoom">
           <Carousel imgUrl="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1903,c_limit/59a78130-6d08-4bb7-ad13-0d4f8d03e620/nike-just-do-it.png" />
           <Carousel imgUrl="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1556,c_limit/15f840ee-ecb2-4d30-af30-6ac8893947ce/nike-just-do-it.png" />
