@@ -24,7 +24,7 @@ export default function HeroImage() {
       animate={{ opacity: 1, y: 208 }}
       transition={{ duration: 0.5, ease: "easeInOut", delay: 0.25 }}
     >
-      <Image src="/images/hero-shoe.png" width={800} height={800} alt="Hero Shoe" />
+      <Image src="/images/hero-shoe.png" width={800} height={800} alt="Hero Shoe image" />
     </motion.div>
   );
 }
