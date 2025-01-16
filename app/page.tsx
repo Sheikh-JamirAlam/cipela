@@ -4,10 +4,11 @@ import { Bag, Logo, Search } from "./components/Icons";
 import CategoryBox from "./components/CategoryBox";
 import CarouselContainer from "./components/CarouselContainer";
 import RevealText from "./components/RevealText";
+import { menshoes, spotlights, womenshoes } from "./data/ShoeImages";
 
 export default function Home() {
   return (
-    <div className="font-sans">
+    <div className="font-sans select-none">
       <main>
         <section className="w-full px-16 py-6 fixed top-0 flex items-center justify-between z-50">
           <Logo />
@@ -29,11 +30,41 @@ export default function Home() {
             <RevealText text="Classics&nbsp;Spotlight" />
             <div className="px-6 py-2 bg-gray-200 rounded cursor-pointer transition-all duration-500 hover:bg-gray-900 hover:text-white">FIND MORE</div>
           </div>
-          <CarouselContainer />
+          <CarouselContainer carousels={spotlights} />
         </section>
-        <section className="py-32">
+        <section className="pt-32">
           <div className="w-full px-16 pb-6 flex justify-between">
             <RevealText text="Shop&nbsp;Men" />
+          </div>
+          <div className="flex gap-[2px]">
+            <CategoryBox imgUrl="/images/men-casual.jpg" imgText="Men's Casual" />
+            <CategoryBox imgUrl="/images/men-sports.jpg" imgText="Men's Sports" />
+          </div>
+        </section>
+        <section className="pt-12">
+          <div className="w-full px-16 pb-6 flex justify-end">
+            <div className="px-6 py-2 bg-gray-200 rounded cursor-pointer transition-all duration-500 hover:bg-gray-900 hover:text-white">FIND MORE</div>
+          </div>
+          <CarouselContainer carousels={menshoes} />
+        </section>
+        <section className="pt-32">
+          <div className="w-full px-16 pb-6 flex justify-between">
+            <RevealText text="Shop&nbsp;Women" />
+          </div>
+          <div className="flex gap-[2px]">
+            <CategoryBox imgUrl="/images/women-casual.jpg" imgText="Women's Casual" />
+            <CategoryBox imgUrl="/images/women-sports.jpg" imgText="Women's Sports" />
+          </div>
+        </section>
+        <section className="pt-12">
+          <div className="w-full px-16 pb-6 flex justify-end">
+            <div className="px-6 py-2 bg-gray-200 rounded cursor-pointer transition-all duration-500 hover:bg-gray-900 hover:text-white">FIND MORE</div>
+          </div>
+          <CarouselContainer carousels={womenshoes} />
+        </section>
+        <section className="pt-32">
+          <div className="w-full px-16 pb-6 flex justify-between">
+            <RevealText text="Shop&nbsp;Women" />
           </div>
           <div className="flex gap-[2px]">
             <CategoryBox imgUrl="/images/men-casual.jpg" imgText="Men's Casual" />
