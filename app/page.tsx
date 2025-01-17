@@ -66,7 +66,7 @@ export default function Home() {
         </section>
         <section className="mt-28 flex flex-col justify-start items-center overflow-hidden">
           <div className="w-full">
-            <Image className="w-full" src="/images/vini-poster.jpeg" width={1500} height={1500} alt="Vini Poster" />
+            <Image className="w-full brightness-75" src="/images/vini-poster.jpeg" width={1500} height={1500} alt="Vini Poster" />
           </div>
           <FeaturedBackground />
         </section>
