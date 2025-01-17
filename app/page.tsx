@@ -1,12 +1,13 @@
+import Image from "next/image";
 import HeroText from "./components/HeroText";
 import HeroImage from "./components/HeroImage";
-import { Bag, Logo, Search } from "./components/Icons";
 import CategoryBox from "./components/CategoryBox";
 import CarouselContainer from "./components/CarouselContainer";
 import RevealText from "./components/RevealText";
-import { menshoes, spotlights, womenshoes } from "./data/ShoeImages";
-import Image from "next/image";
 import FeaturedBackground from "./components/FeaturedBackground";
+import ShowcaseContainer from "./components/ShowcaseContainer";
+import { Bag, Facebook, Instagram, Linkedin, Logo, Search } from "./components/Icons";
+import { menshoes, spotlights, womenshoes } from "./data/ShoeImages";
 
 export default function Home() {
   return (
@@ -64,15 +65,84 @@ export default function Home() {
           </div>
           <CarouselContainer carousels={womenshoes} />
         </section>
-        <section className="mt-28 flex flex-col justify-start items-center overflow-hidden">
+        <section className="mt-28 flex flex-col justify-start items-center">
           <div className="w-full">
             <Image className="w-full brightness-75" src="/images/vini-poster.jpeg" width={1500} height={1500} alt="Vini Poster" />
           </div>
           <FeaturedBackground />
         </section>
-        <section className="h-screen"></section>
+        <section className="pb-32">
+          <ShowcaseContainer />
+        </section>
       </main>
-      <footer></footer>
+      <footer className="select-text">
+        <div className="relative h-[50rem]" style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}>
+          <div className="relative h-[calc(100vh+50rem)] -top-[100vh]">
+            <div className="h-[50rem] sticky top-[calc(100vh-50rem)]">
+              <div className="py-16 px-40 h-full w-full flex flex-col justify-between bg-dark text-background">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <Logo className="w-[8vw] h-[8vw] fill-background" />
+                    <h1 className="text-[10vw] leading-none">Cipela</h1>
+                  </div>
+                  <div className="w-[30%]">
+                    <p className="text-stone-200/60">Stay in the loop</p>
+                    <div className="w-full py-2 mt-4 flex border-b-[1px] border-stone-200/60 has-[:focus]:border-background transition-colors">
+                      <input className="w-full bg-transparent outline-none placeholder:text-background" placeholder="Enter your email" type="text" />
+                      <p className="text-sm text-stone-200/60 hover:text-background transition-colors cursor-pointer">Subscribe</p>
+                    </div>
+                    <p className="mt-4 text-sm">
+                      By signing up, I agree with the{" "}
+                      <a href="" className="underline">
+                        data protection policy
+                      </a>{" "}
+                      of Cipela.
+                    </p>
+                    <div className="mt-6 flex gap-4 text-2xl">
+                      <Facebook className="text-stone-200/60 hover:text-background transition-colors cursor-pointer" />
+                      <Instagram className="text-stone-200/60 hover:text-background transition-colors cursor-pointer" />
+                      <a href="https://www.linkedin.com/in/sheikhjamiralam/">
+                        <Linkedin className="text-stone-200/60 hover:text-background transition-colors cursor-pointer" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex shrink-0 gap-40">
+                    <div className="flex flex-col gap-2">
+                      <h3 className="mb-2 uppercase text-stone-200/60 text-sm">Resources</h3>
+                      <p className="link link-underline link-underline-black cursor-pointer">Find A Store</p>
+                      <p className="link link-underline link-underline-black cursor-pointer">Become A Member</p>
+                      <p className="link link-underline link-underline-black cursor-pointer">Send Us Feedback</p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="mb-2 uppercase text-stone-200/60 text-sm">Help</h3>
+                      <p className="link link-underline link-underline-black cursor-pointer">Get Help</p>
+                      <p className="link link-underline link-underline-black cursor-pointer">Order Status</p>
+                      <p className="link link-underline link-underline-black cursor-pointer">Delivery</p>
+                      <p className="link link-underline link-underline-black cursor-pointer">Returns</p>
+                      <p className="link link-underline link-underline-black cursor-pointer">Payment Options</p>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="mb-2 uppercase text-stone-200/60 text-sm">Company</h3>
+                      <p className="link link-underline link-underline-black cursor-pointer">About Cipela</p>
+                      <p className="link link-underline link-underline-black cursor-pointer">News</p>
+                      <p className="link link-underline link-underline-black cursor-pointer">Careers</p>
+                      <p className="link link-underline link-underline-black cursor-pointer">Contact Us</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full h-[1px] bg-stone-200/60"></div>
+                <div className="flex gap-16 text-sm text-stone-200/60">
+                  <p>© 2025 Cipela. All rights reserved</p>
+                  <p className="link link-underline link-underline-grey cursor-pointer">Terms of Use</p>
+                  <p className="link link-underline link-underline-grey cursor-pointer">Privacy Policy</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

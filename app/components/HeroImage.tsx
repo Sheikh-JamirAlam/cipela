@@ -7,14 +7,13 @@ import Image from "next/image";
 export default function HeroImage() {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({ target: container, offset: ["center center", "end start"] });
-
-  const yAnimate = useTransform(scrollYProgress, [0, 1], [208, -400]);
-  const smoothYAnimate = useSpring(yAnimate, { stiffness: 180, damping: 25, mass: 0.1 });
+  const smoothYAnimate = useSpring(scrollYProgress, { stiffness: 180, damping: 25, mass: 0.1 });
+  const yAnimate = useTransform(smoothYAnimate, [0, 1], [208, -400]);
 
   return (
     <motion.div
       ref={container}
-      style={{ y: smoothYAnimate }}
+      style={{ y: yAnimate }}
       className="absolute"
       initial={{ opacity: 0, y: "100%" }}
       animate={{ opacity: 1, y: 208 }}
