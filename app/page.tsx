@@ -1,33 +1,18 @@
 import Image from "next/image";
-import HeroText from "./components/HeroText";
-import HeroImage from "./components/HeroImage";
 import CategoryBox from "./components/CategoryBox";
 import CarouselContainer from "./components/CarouselContainer";
 import RevealText from "./components/RevealText";
 import FeaturedBackground from "./components/FeaturedBackground";
 import ShowcaseContainer from "./components/ShowcaseContainer";
-import { Bag, Facebook, Instagram, Linkedin, Logo, Search } from "./components/Icons";
+import HeroSection from "./components/HeroSection";
+import { Facebook, Instagram, Linkedin, Logo } from "./components/Icons";
 import { menshoes, spotlights, womenshoes } from "./data/ShoeImages";
 
 export default function Home() {
   return (
     <div className="font-sans select-none">
       <main>
-        <section className="w-full px-16 py-6 fixed top-0 flex items-center justify-between z-50">
-          <Logo />
-          <div className="flex gap-2">
-            <div className="w-10 h-10 bg-gray-200 rounded-sm flex items-center justify-center">
-              <Search className="text-2xl" />
-            </div>
-            <div className="w-10 h-10 bg-gray-200 rounded-sm flex items-center justify-center">
-              <Bag className="text-2xl" />
-            </div>
-          </div>
-        </section>
-        <section className="flex justify-center items-center">
-          <HeroText />
-          <HeroImage />
-        </section>
+        <HeroSection />
         <section className="pt-32">
           <div className="w-full px-16 pb-6 flex justify-between">
             <RevealText text="Classics&nbsp;Spotlight" />
@@ -111,24 +96,24 @@ export default function Home() {
                   <div className="flex shrink-0 gap-40">
                     <div className="flex flex-col gap-2">
                       <h3 className="mb-2 uppercase text-stone-200/60 text-sm">Resources</h3>
-                      <p className="link link-underline link-underline-black cursor-pointer">Find A Store</p>
-                      <p className="link link-underline link-underline-black cursor-pointer">Become A Member</p>
-                      <p className="link link-underline link-underline-black cursor-pointer">Send Us Feedback</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Find A Store</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Become A Member</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Send Us Feedback</p>
                     </div>
                     <div className="flex flex-col gap-2">
                       <h3 className="mb-2 uppercase text-stone-200/60 text-sm">Help</h3>
-                      <p className="link link-underline link-underline-black cursor-pointer">Get Help</p>
-                      <p className="link link-underline link-underline-black cursor-pointer">Order Status</p>
-                      <p className="link link-underline link-underline-black cursor-pointer">Delivery</p>
-                      <p className="link link-underline link-underline-black cursor-pointer">Returns</p>
-                      <p className="link link-underline link-underline-black cursor-pointer">Payment Options</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Get Help</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Order Status</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Delivery</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Returns</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Payment Options</p>
                     </div>
                     <div className="flex flex-col gap-2">
                       <h3 className="mb-2 uppercase text-stone-200/60 text-sm">Company</h3>
-                      <p className="link link-underline link-underline-black cursor-pointer">About Cipela</p>
-                      <p className="link link-underline link-underline-black cursor-pointer">News</p>
-                      <p className="link link-underline link-underline-black cursor-pointer">Careers</p>
-                      <p className="link link-underline link-underline-black cursor-pointer">Contact Us</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">About Cipela</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">News</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Careers</p>
+                      <p className="link link-underline link-underline-white cursor-pointer">Contact Us</p>
                     </div>
                   </div>
                 </div>

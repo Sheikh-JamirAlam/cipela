@@ -33,8 +33,16 @@ body {
   }
 }
 
-.link-underline-black {
+.link-underline-white {
   background-image: linear-gradient(transparent, transparent), linear-gradient(#fafaf9, #fafaf9);
+}
+
+.link-underline-red {
+  background-image: linear-gradient(transparent, transparent), linear-gradient(rgb(239 68 68), rgb(239 68 68));
+}
+
+.link-underline-black {
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#070707, #070707);
 }
 
 .link-underline-grey {
