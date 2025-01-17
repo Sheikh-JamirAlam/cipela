@@ -5,6 +5,8 @@ import CategoryBox from "./components/CategoryBox";
 import CarouselContainer from "./components/CarouselContainer";
 import RevealText from "./components/RevealText";
 import { menshoes, spotlights, womenshoes } from "./data/ShoeImages";
+import Image from "next/image";
+import FeaturedBackground from "./components/FeaturedBackground";
 
 export default function Home() {
   return (
@@ -62,14 +64,11 @@ export default function Home() {
           </div>
           <CarouselContainer carousels={womenshoes} />
         </section>
-        <section className="pt-32">
-          <div className="w-full px-16 pb-6 flex justify-between">
-            <RevealText text="Shop&nbsp;Women" />
+        <section className="mt-28 flex flex-col justify-start items-center overflow-hidden">
+          <div className="w-full">
+            <Image className="w-full" src="/images/vini-poster.jpeg" width={1500} height={1500} alt="Vini Poster" />
           </div>
-          <div className="flex gap-[2px]">
-            <CategoryBox imgUrl="/images/men-casual.jpg" imgText="Men's Casual" />
-            <CategoryBox imgUrl="/images/men-sports.jpg" imgText="Men's Sports" />
-          </div>
+          <FeaturedBackground />
         </section>
         <section className="h-screen"></section>
       </main>

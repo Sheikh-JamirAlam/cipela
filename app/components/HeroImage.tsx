@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useScroll, useSpring, useTransform, motion } from "motion/react";
 import Image from "next/image";
 
@@ -10,10 +10,6 @@ export default function HeroImage() {
 
   const yAnimate = useTransform(scrollYProgress, [0, 1], [208, -400]);
   const smoothYAnimate = useSpring(yAnimate, { stiffness: 180, damping: 25, mass: 0.1 });
-
-  useEffect(() => {
-    console.log(smoothYAnimate);
-  }, [smoothYAnimate]);
 
   return (
     <motion.div
