@@ -106,6 +106,7 @@ export default function HeroSection() {
     }
 
     if (isSearchVisible) {
+      setIsSlideNavbarVisible("none");
       animate(searchRef.current, { y: 0 }, { duration: 0.4, ease: [0.33, 1, 0.68, 1] });
     } else {
       animate(searchRef.current, { y: "-100%" }, { duration: 0.4, ease: [0.33, 1, 0.68, 1] });
