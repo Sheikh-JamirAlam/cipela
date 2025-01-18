@@ -24,17 +24,22 @@ export default function FeaturedBackground() {
   });
 
   return (
-    <div ref={container} className="w-full absolute">
-      <motion.h1 style={{ y: yTextAnimate, scale: scaleTextAnimate }} className="w-fit mx-auto mt-20 text-white text-6xl">
+    <div ref={container} className="w-full absolute overflow-hidden">
+      <motion.h1 style={{ y: yTextAnimate, scale: scaleTextAnimate }} className="w-fit mx-auto mt-12 md:mt-20 text-white text-[6vw]">
         Mercurial Vapor 1 RGN
       </motion.h1>
-      <motion.img style={{ y: yMercurialAnimate, rotate: rotateMercurialAnimate }} className="w-[25rem] ml-auto mr-40 mt-[20%]" src="/images/mercurial-small.png" alt="Mercurial Image" />
-      <motion.img style={{ y: yR9Animate, rotate: rotateR9Animate }} className="w-[25rem] mr-auto ml-40" src="/images/r9-small.png" alt="Vini Image" />
-      <motion.p style={{ y: yViniAnimate, rotate: rotateR9TextAnimate }} className="w-[25rem] ml-auto mr-52 mt-[2.5%] text-white text-3xl">
+      <motion.img
+        style={{ y: yMercurialAnimate, rotate: rotateMercurialAnimate }}
+        className="w-[25vw] 2xl:w-[25rem] ml-auto mr-6 xl:mr-40 mt-[10%] min-[1720px]:mt-[15%]"
+        src="/images/mercurial-small.png"
+        alt="Mercurial Image"
+      />
+      <motion.img style={{ y: yR9Animate, rotate: rotateR9Animate }} className="w-[25vw] 2xl:w-[25rem] mr-auto ml-6 xl:ml-40" src="/images/r9-small.png" alt="Vini Image" />
+      <motion.p style={{ y: yViniAnimate, rotate: rotateR9TextAnimate }} className="w-[25vw] 2xl:w-[25rem] ml-auto mr-10 xl:mr-52 mt-[2.5%] text-white text-[1.6vw] 2xl:text-3xl">
         Mercurial Vapor 1 RGN, first worn by R9 in 2002
       </motion.p>
-      <motion.img style={{ y: yViniAnimate, rotate: rotateViniAnimate }} className="w-[25rem] ml-auto mr-20 mt-[15%]" src="/images/vini-small.png" alt="Vini Image" />
-      <motion.p style={{ y: yViniAnimate, rotate: rotateViniTextAnimate }} className="w-[25rem] mr-auto ml-36 mt-[-2.5%] text-white text-3xl">
+      <motion.img style={{ y: yViniAnimate, rotate: rotateViniAnimate }} className="w-[25vw] 2xl:w-[25rem] ml-auto mr-6 xl:mr-20 mt-[12%]" src="/images/vini-small.png" alt="Vini Image" />
+      <motion.p style={{ y: yViniAnimate, rotate: rotateViniTextAnimate }} className="w-[25vw] 2xl:w-[25rem] mr-auto ml-10 xl:ml-36 mt-[-2.5%] text-white text-[1.6vw] 2xl:text-3xl">
         “It&apos;s a really special feeling to use these boots now, knowing the history behind them,” says Vini Jr.
       </motion.p>
     </div>

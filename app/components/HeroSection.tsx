@@ -8,8 +8,10 @@ import HeroText from "./HeroText";
 import HeroImage from "./HeroImage";
 import Link from "next/link";
 import Lenis from "lenis";
+import MenuContainer from "./MenuContainer";
 
 export default function HeroSection() {
+  const [viewportWidth, setViewportWidth] = useState(0);
   const solidNavbar = useRef(null);
   const [scope, animate] = useAnimate();
   const [isNavbarVisible, setIsNavbarVisible] = useState<boolean>(true);
@@ -113,9 +115,20 @@ export default function HeroSection() {
     }
   }, [isSearchVisible]);
 
+  useEffect(() => {
+    const calculateViewport = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    calculateViewport();
+    window.addEventListener("resize", calculateViewport);
+    return () => {
+      window.removeEventListener("resize", calculateViewport);
+    };
+  }, []);
+
   return (
     <>
-      <motion.section ref={scope} initial={{ y: 0 }} className="w-full px-16 py-6 fixed top-0 flex items-center justify-between z-50">
+      <motion.section ref={scope} initial={{ y: 0 }} className="w-full px-6 lg:px-16 py-6 fixed top-0 flex items-center justify-between z-50">
         <Link href="/">
           <Logo />
         </Link>
@@ -131,46 +144,75 @@ export default function HeroSection() {
           </div>
         </div>
       </motion.section>
-      <motion.section ref={solidNavbar} initial={{ y: "-100%" }} className="w-full px-16 py-2 bg-white border-b-[1px] border-stone-200/60 fixed top-0 flex items-center justify-between z-50">
-        <div className="w-52">
-          <Link className="w-fit block" href="/">
-            <Logo />
-          </Link>
-        </div>
-        <div className="flex gap-6">
-          <p onMouseEnter={() => setIsSlideNavbarVisible("men")} className="link link-underline link-underline-black cursor-pointer">
-            Men
-          </p>
-          <p onMouseEnter={() => setIsSlideNavbarVisible("women")} className="link link-underline link-underline-black cursor-pointer">
-            Women
-          </p>
-          <p onMouseEnter={() => setIsSlideNavbarVisible("sale")} className="text-red-500 link link-underline link-underline-red cursor-pointer">
-            Sale
-          </p>
-          <p onMouseEnter={() => setIsSlideNavbarVisible("world")} className="link link-underline link-underline-black cursor-pointer">
-            Our World
-          </p>
-        </div>
-        <div className="w-52 flex justify-between">
-          <div onClick={() => setIsSearchVisible(true)} className="flex items-center justify-center link link-underline link-underline-black cursor-pointer">
-            <Search className="text-lg" />
-            Search
-          </div>
-          <div className="flex items-center justify-center link link-underline link-underline-black cursor-pointer">
-            <Heart className="text-lg" />
-            Wishlist
-          </div>
-          <div className="flex items-center justify-center link link-underline link-underline-black cursor-pointer">
-            <Bag className="text-lg" />
-            Bag
-          </div>
-        </div>
+      <motion.section ref={solidNavbar} initial={{ y: "-100%" }} className="w-full px-6 lg:px-16 py-2 bg-white border-b-[1px] border-stone-200/60 fixed top-0 flex items-center justify-between z-50">
+        {viewportWidth >= 1024 ? (
+          <>
+            <div className="w-52">
+              <Link className="w-fit block" href="/">
+                <Logo />
+              </Link>
+            </div>
+            <div className="flex gap-6">
+              <p onMouseEnter={() => setIsSlideNavbarVisible("men")} className="link link-underline link-underline-black cursor-pointer">
+                Men
+              </p>
+              <p onMouseEnter={() => setIsSlideNavbarVisible("women")} className="link link-underline link-underline-black cursor-pointer">
+                Women
+              </p>
+              <p onMouseEnter={() => setIsSlideNavbarVisible("sale")} className="text-red-500 link link-underline link-underline-red cursor-pointer">
+                Sale
+              </p>
+              <p onMouseEnter={() => setIsSlideNavbarVisible("world")} className="link link-underline link-underline-black cursor-pointer">
+                Our World
+              </p>
+            </div>
+            <div className="w-52 flex justify-between">
+              <div onClick={() => setIsSearchVisible(true)} className="flex items-center justify-center link link-underline link-underline-black cursor-pointer">
+                <Search className="text-lg" />
+                Search
+              </div>
+              <div className="flex items-center justify-center link link-underline link-underline-black cursor-pointer">
+                <Heart className="text-lg" />
+                Wishlist
+              </div>
+              <div className="flex items-center justify-center link link-underline link-underline-black cursor-pointer">
+                <Bag className="text-lg" />
+                Bag
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="w-32 flex justify-start gap-4">
+              <MenuContainer lenisRef={lenisRef} />
+              <div onClick={() => setIsSearchVisible(true)} className="flex items-center justify-center cursor-pointer">
+                <Search className="text-lg" />
+              </div>
+            </div>
+            <div className="w-fit">
+              <Link className="w-fit flex gap-2 items-center" href="/">
+                <Logo />
+                <p className="text-3xl">Cipela</p>
+              </Link>
+            </div>
+            <div className="w-32 flex justify-between">
+              <div className="flex items-center justify-center cursor-pointer">
+                <Heart className="text-lg" />
+                Wishlist
+              </div>
+              <div className="flex items-center justify-center cursor-pointer">
+                <Bag className="text-lg" />
+                Bag
+              </div>
+            </div>
+          </>
+        )}
       </motion.section>
       <motion.section
         ref={slideNavbarDetails}
         onMouseLeave={() => setIsSlideNavbarVisible("none")}
         initial={{ y: "calc(-100% - 67px)", opacity: 0 }}
-        className="w-full bg-white border-b-[1px] border-stone-200/60 fixed top-[67px] z-40"
+        className="w-full bg-white border-b-[1px] border-stone-200/60 absolute md:fixed top-[67px] z-40"
       >
         {isSlideNavbarVisible === "men" || isSlideNavbarVisible === "women" ? (
           <div className="flex justify-between">
@@ -339,7 +381,7 @@ export default function HeroSection() {
           </div>
         </div>
       </motion.section>
-      <section ref={container} className="flex justify-center items-center">
+      <section ref={container} className="mt-52 md:mt-36 xl:mt-0 flex justify-center items-center">
         <HeroText />
         <HeroImage />
       </section>
