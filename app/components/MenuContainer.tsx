@@ -24,6 +24,7 @@ function useMenuAnimation(isOpen: boolean, lenisRef: React.RefObject<Lenis | nul
     if (isOpen) {
       lenis?.stop();
       document.body.style.overflow = "hidden";
+      document.getElementById("menu")?.setAttribute("data-lenis-prevent", "");
     } else {
       lenis?.start();
       document.body.style.overflow = "auto";

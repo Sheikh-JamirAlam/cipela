@@ -14,7 +14,7 @@ export default function RevealText({ text }: { text: string }) {
   }, [isInView]);
 
   return (
-    <div ref={scope} className="text-3xl inline-block overflow-hidden">
+    <div ref={scope} className="text-lg xs:text-2xl lg:text-3xl inline-block overflow-hidden">
       {text.split("").map((char, i) => (
         <motion.span key={i} className="inline-block" initial={{ y: "100%" }}>
           {char}

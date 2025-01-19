@@ -13,7 +13,7 @@ export default function HeroText() {
   }, []);
 
   return (
-    <div ref={scope} className="lg:w-[93%] mx-auto text-[13.2vw] lg:text-[12vw] leading-none text-center select-none">
+    <div ref={scope} className="lg:w-[93%] mx-auto text-[13.1vw] lg:text-[12vw] leading-none text-center select-none">
       <div className="inline-block">
         {"Cipela—".split("").map((char, i) => (
           <motion.span key={i} className="inline-block" initial={{ y: "100%", opacity: 0 }}>

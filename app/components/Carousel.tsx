@@ -14,7 +14,7 @@ export default function Carousel({ imgUrl, hoverUrl, name, price }: { imgUrl: st
     >
       <div
         style={{ backgroundImage: hoverUrl ? (!isHovered ? `url(${imgUrl})` : `url(${hoverUrl})`) : `url(${imgUrl})` }}
-        className={`w-[25rem] h-[25rem] bg-cover bg-center transition-all duration-200 bg-stone-100/60`}
+        className={`w-[15rem] h-[15rem] sm:w-[25rem] sm:h-[25rem] bg-cover bg-center transition-all duration-200 bg-stone-100/60`}
       ></div>
       {name && (
         <div className="pt-2 flex flex-col text-center text-sm select-none">

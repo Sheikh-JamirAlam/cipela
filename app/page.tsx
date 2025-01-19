@@ -14,39 +14,39 @@ export default function Home() {
       <main>
         <HeroSection />
         <section className="pt-[30rem] lg:pt-[20rem] xl:pt-32">
-          <div className="w-full px-16 pb-6 flex justify-between">
+          <div className="w-full px-6 lg:px-16 pb-6 flex justify-between">
             <RevealText text="Classics&nbsp;Spotlight" />
-            <div className="px-6 py-2 bg-gray-200 rounded cursor-pointer transition-all duration-500 hover:bg-gray-900 hover:text-white">FIND MORE</div>
+            <div className="px-3 xs:px-4 sm:px-6 py-2 bg-gray-200 rounded text-xs xs:text-sm sm:text-base cursor-pointer transition-all duration-500 hover:bg-gray-900 hover:text-white">FIND MORE</div>
           </div>
           <CarouselContainer carousels={spotlights} />
         </section>
         <section className="pt-32">
-          <div className="w-full px-16 pb-6 flex justify-between">
+          <div className="w-full px-6 lg:px-16 pb-6 flex justify-between">
             <RevealText text="Shop&nbsp;Men" />
           </div>
-          <div className="flex gap-[2px]">
+          <div className="flex flex-col sm:flex-row gap-[1px] sm:gap-[2px]">
             <CategoryBox imgUrl="/images/men-casual.jpg" imgText="Men's Casual" />
             <CategoryBox imgUrl="/images/men-sports.jpg" imgText="Men's Sports" />
           </div>
         </section>
         <section className="pt-12">
-          <div className="w-full px-16 pb-6 flex justify-end">
-            <div className="px-6 py-2 bg-gray-200 rounded cursor-pointer transition-all duration-500 hover:bg-gray-900 hover:text-white">FIND MORE</div>
+          <div className="w-full px-6 lg:px-16 pb-6 flex justify-end">
+            <div className="px-3 xs:px-4 sm:px-6 py-2 bg-gray-200 rounded text-xs xs:text-sm sm:text-base cursor-pointer transition-all duration-500 hover:bg-gray-900 hover:text-white">FIND MORE</div>
           </div>
           <CarouselContainer carousels={menshoes} />
         </section>
         <section className="pt-32">
-          <div className="w-full px-16 pb-6 flex justify-between">
+          <div className="w-full px-6 lg:px-16 pb-6 flex justify-between">
             <RevealText text="Shop&nbsp;Women" />
           </div>
-          <div className="flex gap-[2px]">
+          <div className="flex flex-col sm:flex-row gap-[1px] sm:gap-[2px]">
             <CategoryBox imgUrl="/images/women-casual.jpg" imgText="Women's Casual" />
             <CategoryBox imgUrl="/images/women-sports.jpg" imgText="Women's Sports" />
           </div>
         </section>
         <section className="pt-12">
-          <div className="w-full px-16 pb-6 flex justify-end">
-            <div className="px-6 py-2 bg-gray-200 rounded cursor-pointer transition-all duration-500 hover:bg-gray-900 hover:text-white">FIND MORE</div>
+          <div className="w-full px-6 lg:px-16 pb-6 flex justify-end">
+            <div className="px-3 xs:px-4 sm:px-6 py-2 bg-gray-200 rounded text-xs xs:text-sm sm:text-base cursor-pointer transition-all duration-500 hover:bg-gray-900 hover:text-white">FIND MORE</div>
           </div>
           <CarouselContainer carousels={womenshoes} />
         </section>
@@ -70,13 +70,13 @@ export default function Home() {
                     <Logo className="w-[8vw] h-[8vw] fill-background" />
                     <h1 className="text-[10vw] leading-none">Cipela</h1>
                   </div>
-                  <div className="w-48 md:w-[50%] lg:w-[30%]">
+                  <div className="w-full xs:w-48 md:w-[50%] lg:w-[30%] mt-4 xs:mt-0">
                     <p className="text-stone-200/60">Stay in the loop</p>
-                    <div className="w-full py-2 mt-4 flex border-b-[1px] border-stone-200/60 has-[:focus]:border-background transition-colors">
+                    <div className="w-full py-2 xs:mt-4 flex border-b-[1px] border-stone-200/60 has-[:focus]:border-background transition-colors">
                       <input className="w-full bg-transparent outline-none placeholder:text-background" placeholder="Enter your email" type="text" />
                       <p className="text-sm text-stone-200/60 hover:text-background transition-colors cursor-pointer">Subscribe</p>
                     </div>
-                    <p className="mt-4 text-sm">
+                    <p className="xs:mt-4 text-sm">
                       By signing up, I agree with the{" "}
                       <a href="" className="underline">
                         data protection policy

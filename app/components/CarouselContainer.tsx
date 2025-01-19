@@ -15,7 +15,7 @@ export default function CarouselContainer({ carousels }: { carousels: { normal: 
           emblaApi?.scrollPrev();
         }}
         aria-label="Pervious button, click to see the other features"
-        className={`w-8 h-8 flex justify-center items-center text-lg bg-neutral-50 hover:bg-opacity-75 hover:bg-light-grey transition-all rounded-full absolute left-16 z-30`}
+        className={`w-8 h-8 flex justify-center items-center text-lg bg-neutral-50 hover:bg-opacity-75 hover:bg-light-grey transition-all rounded-full absolute left-6 lg:left-16 z-30`}
       >
         <Arrow />
       </button>
@@ -24,7 +24,7 @@ export default function CarouselContainer({ carousels }: { carousels: { normal: 
           emblaApi?.scrollNext();
         }}
         aria-label="Next button, click to see the other features"
-        className={`w-8 h-8 flex justify-center items-center text-lg bg-neutral-50 hover:bg-opacity-75 hover:bg-light-grey transition-all rounded-full absolute right-16 z-30`}
+        className={`w-8 h-8 flex justify-center items-center text-lg bg-neutral-50 hover:bg-opacity-75 hover:bg-light-grey transition-all rounded-full absolute right-6 lg:right-16 z-30`}
       >
         <Arrow className="rotate-180" />
       </button>

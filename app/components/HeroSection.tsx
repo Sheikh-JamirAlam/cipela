@@ -128,19 +128,19 @@ export default function HeroSection() {
 
   return (
     <>
-      <motion.section ref={scope} initial={{ y: 0 }} className="w-full px-6 lg:px-16 py-6 fixed top-0 flex items-center justify-between z-50">
+      <motion.section ref={scope} initial={{ y: 0 }} className="w-full px-6 lg:px-16 py-2 sm:py-6 fixed top-0 flex items-center justify-between z-50">
         <Link href="/">
-          <Logo />
+          <Logo className="w-10 h-10 sm:w-auto sm:h-auto" />
         </Link>
         <div className="flex gap-2">
           <div
             onClick={() => setIsSearchVisible(true)}
-            className="w-10 h-10 bg-gray-200 rounded-sm flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors duration-500 cursor-pointer"
+            className="w-6 h-6 sm:w-10 sm:h-10 bg-gray-200 rounded-sm flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors duration-500 cursor-pointer"
           >
-            <Search className="text-2xl" />
+            <Search className="text-lg sm:text-2xl" />
           </div>
-          <div className="w-10 h-10 bg-gray-200 rounded-sm flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors duration-500 cursor-pointer">
-            <Bag className="text-2xl" />
+          <div className="w-6 h-6 sm:w-10 sm:h-10 bg-gray-200 rounded-sm flex items-center justify-center hover:bg-gray-900 hover:text-white transition-colors duration-500 cursor-pointer">
+            <Bag className="text-lg sm:text-2xl" />
           </div>
         </div>
       </motion.section>
@@ -183,7 +183,7 @@ export default function HeroSection() {
           </>
         ) : (
           <>
-            <div className="w-32 flex justify-start gap-4">
+            <div className="sm:w-32 flex gap-2 sm:gap-4 sm:justify-start items-center">
               <MenuContainer lenisRef={lenisRef} />
               <div onClick={() => setIsSearchVisible(true)} className="flex items-center justify-center cursor-pointer">
                 <Search className="text-lg" />
@@ -191,18 +191,18 @@ export default function HeroSection() {
             </div>
             <div className="w-fit">
               <Link className="w-fit flex gap-2 items-center" href="/">
-                <Logo />
-                <p className="text-3xl">Cipela</p>
+                <Logo className="w-8 h-8 sm:w-auto sm:h-auto" />
+                <p className="text-lg sm:text-3xl">Cipela</p>
               </Link>
             </div>
-            <div className="w-32 flex justify-between">
+            <div className="sm:w-32 flex gap-2 sm:gap-0 sm:justify-between items-center">
               <div className="flex items-center justify-center cursor-pointer">
                 <Heart className="text-lg" />
-                Wishlist
+                {viewportWidth >= 640 && <p>Wishlist</p>}
               </div>
               <div className="flex items-center justify-center cursor-pointer">
                 <Bag className="text-lg" />
-                Bag
+                {viewportWidth >= 640 && <p>Bag</p>}
               </div>
             </div>
           </>
@@ -374,8 +374,8 @@ export default function HeroSection() {
       </motion.section>
       {isSearchVisible && <div onClick={() => setIsSearchVisible(false)} className="w-screen h-screen fixed top-0 right-0 bg-black/30 z-50"></div>}
       <motion.section ref={searchRef} initial={{ y: "-100%" }} className="w-full bg-white border-b-[1px] border-stone-200 fixed top-0 flex items-center justify-between z-50">
-        <div className="w-full px-8 py-4 flex items-center">
-          <input className="w-full h-20 text-5xl outline-none placeholder:text-foreground" placeholder="Type whatever you have in mind" type="text" />
+        <div className="w-full px-6 md:px-8 py-4 flex items-center">
+          <input className="w-full h-14 md:h-20 text-base xs:text-2xl md:text-4xl lg:text-5xl outline-none placeholder:text-foreground" placeholder="Type whatever you have in mind" type="text" />
           <div onClick={() => setIsSearchVisible(false)} className="text-2xl rotate-45 cursor-pointer">
             <Plus />
           </div>

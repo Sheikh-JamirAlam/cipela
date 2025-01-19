@@ -10,7 +10,7 @@ export default function HeroImage() {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({ target: container, offset: ["start start", "end start"] });
   const smoothYAnimate = useSpring(scrollYProgress, { stiffness: 180, damping: 25, mass: 0.1 });
-  const yAnimate = useTransform(smoothYAnimate, [0, 1], [viewportWidth >= 1280 ? 208 : 400, viewportWidth >= 1280 ? -400 : 100]);
+  const yAnimate = useTransform(smoothYAnimate, [0, 1], [viewportWidth >= 1280 ? 208 : viewportWidth >= 640 ? 400 : 300, viewportWidth >= 1280 ? -400 : 100]);
 
   useEffect(() => {
     const calculateViewport = () => {
@@ -26,14 +26,14 @@ export default function HeroImage() {
   return (
     <motion.div
       ref={container}
-      style={{ y: isAnimationComplete ? yAnimate : viewportWidth >= 1280 ? 400 : 600 }}
+      style={{ y: isAnimationComplete ? yAnimate : viewportWidth >= 1280 ? 400 : viewportWidth >= 640 ? 600 : 500 }}
       onAnimationComplete={() => setIsAnimationComplete(true)}
       className="absolute translate-y-[608]"
-      initial={{ opacity: 0, y: viewportWidth >= 1280 ? 400 : 600 }}
-      animate={{ opacity: 1, y: viewportWidth >= 1280 ? 208 : 400 }}
+      initial={{ opacity: 0, y: viewportWidth >= 1280 ? 400 : viewportWidth >= 640 ? 600 : 500 }}
+      animate={{ opacity: 1, y: viewportWidth >= 1280 ? 208 : viewportWidth >= 640 ? 400 : 300 }}
       transition={{ duration: 0.5, ease: "easeInOut", delay: 0.25 }}
     >
-      <Image className="w-[45vw] lg:w-[40vw]" src="/images/hero-shoe.png" width={800} height={800} alt="Hero Shoe image" />
+      <Image className="w-[70vw] sm:w-[45vw] lg:w-[40vw]" src="/images/hero-shoe.png" width={800} height={800} alt="Hero Shoe image" />
     </motion.div>
   );
 }

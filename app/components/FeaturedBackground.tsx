@@ -1,31 +1,39 @@
 "use client";
 
-import { useRef } from "react";
-import { useScroll, useSpring, useTransform, motion, useMotionValueEvent } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { useScroll, useSpring, useTransform, motion } from "motion/react";
 
 export default function FeaturedBackground() {
+  const [viewportWidth, setViewportWidth] = useState(0);
   const container = useRef(null);
   const { scrollYProgress } = useScroll({ target: container, offset: ["start end", "end start"] });
   const smoothYAnimate = useSpring(scrollYProgress, { stiffness: 180, damping: 25, mass: 0.1 });
 
-  const yTextAnimate = useTransform(smoothYAnimate, [0.1, 1], [0, 100]);
+  const yTextAnimate = useTransform(smoothYAnimate, [0.1, 1], [viewportWidth >= 640 ? 0 : -10, viewportWidth >= 640 ? 100 : 50]);
   const scaleTextAnimate = useTransform(smoothYAnimate, [0.1, 1], [1, 1.25]);
-  const yMercurialAnimate = useTransform(smoothYAnimate, [0.25, 1], [0, -150]);
-  const rotateMercurialAnimate = useTransform(smoothYAnimate, [0.25, 1], [0, 20]);
-  const yR9Animate = useTransform(smoothYAnimate, [0.35, 1], [0, -150]);
-  const rotateR9Animate = useTransform(smoothYAnimate, [0.35, 1], [20, 0]);
-  const rotateR9TextAnimate = useTransform(smoothYAnimate, [0.25, 1], [-20, 20]);
-  const yViniAnimate = useTransform(smoothYAnimate, [0.45, 1], [0, -150]);
-  const rotateViniAnimate = useTransform(smoothYAnimate, [0.45, 1], [20, 0]);
-  const rotateViniTextAnimate = useTransform(smoothYAnimate, [0.45, 1], [20, -10]);
+  const yMercurialAnimate = useTransform(smoothYAnimate, [viewportWidth >= 425 ? 0.25 : 0.15, 1], [0, viewportWidth >= 640 ? -150 : -50]);
+  const rotateMercurialAnimate = useTransform(smoothYAnimate, [viewportWidth >= 425 ? 0.25 : 0.15, 1], [0, 20]);
+  const yR9Animate = useTransform(smoothYAnimate, [viewportWidth >= 425 ? 0.35 : 0.2, 1], [0, viewportWidth >= 640 ? -150 : -100]);
+  const rotateR9Animate = useTransform(smoothYAnimate, [viewportWidth >= 425 ? 0.35 : 0.2, 1], [20, 0]);
+  const rotateR9TextAnimate = useTransform(smoothYAnimate, [viewportWidth >= 425 ? 0.25 : 0.15, 1], [-20, 20]);
+  const yViniAnimate = useTransform(smoothYAnimate, [viewportWidth >= 425 ? 0.45 : 0.3, 1], [0, viewportWidth >= 640 ? -150 : -100]);
+  const rotateViniAnimate = useTransform(smoothYAnimate, [viewportWidth >= 425 ? 0.45 : 0.3, 1], [20, 0]);
+  const rotateViniTextAnimate = useTransform(smoothYAnimate, [viewportWidth >= 425 ? 0.45 : 0.3, 1], [20, viewportWidth >= 640 ? -10 : -50]);
 
-  useMotionValueEvent(smoothYAnimate, "change", (latest) => {
-    console.log(latest);
-  });
+  useEffect(() => {
+    const calculateViewport = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    calculateViewport();
+    window.addEventListener("resize", calculateViewport);
+    return () => {
+      window.removeEventListener("resize", calculateViewport);
+    };
+  }, []);
 
   return (
-    <div ref={container} className="w-full absolute overflow-hidden">
-      <motion.h1 style={{ y: yTextAnimate, scale: scaleTextAnimate }} className="w-fit mx-auto mt-12 md:mt-20 text-white text-[6vw]">
+    <div ref={container} className="w-full pb-[10%] sm:pb-0 absolute overflow-hidden">
+      <motion.h1 style={{ y: yTextAnimate, scale: scaleTextAnimate }} className="w-fit mx-auto mt-0 sm:mt-12 md:mt-20 text-white text-[4vw] xs:text-[6vw]">
         Mercurial Vapor 1 RGN
       </motion.h1>
       <motion.img
