@@ -2,12 +2,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useAnimate, useMotionValueEvent, useScroll } from "motion/react";
+import { motion, useAnimate, useMotionValueEvent, useScroll, cancelFrame, frame } from "motion/react";
 import { Bag, Heart, Logo, Plus, Search } from "./Icons";
 import HeroText from "./HeroText";
 import HeroImage from "./HeroImage";
 import Link from "next/link";
-import Lenis from "lenis";
+import { ReactLenis } from "lenis/react";
+import type { LenisRef } from "lenis/react";
 import MenuContainer from "./MenuContainer";
 
 export default function HeroSection() {
@@ -20,24 +21,19 @@ export default function HeroSection() {
   const container = useRef(null);
   const slideNavbarDetails = useRef(null);
   const searchRef = useRef(null);
-  const lenisRef = useRef<Lenis>(null);
+  const lenisRef = useRef<LenisRef>(null);
   const [isSlideNavbarVisible, setIsSlideNavbarVisible] = useState<string>("none");
   const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false);
   const { scrollYProgress } = useScroll({ target: container, offset: ["start start", "end start"] });
 
   useEffect(() => {
-    const lenis = new Lenis({ autoRaf: true });
-    lenisRef.current = lenis;
+    function update(data: { timestamp: number }) {
+      const time = data.timestamp;
+      lenisRef.current?.lenis?.raf(time);
+    }
+    frame.update(update, true);
 
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
+    return () => cancelFrame(update);
   }, []);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -96,7 +92,7 @@ export default function HeroSection() {
   }, [isSlideNavbarVisible]);
 
   useEffect(() => {
-    const lenis = lenisRef.current;
+    const lenis = lenisRef.current?.lenis;
     if (!lenis) return;
 
     if (isSearchVisible) {
@@ -385,6 +381,7 @@ export default function HeroSection() {
         <HeroText />
         <HeroImage />
       </section>
+      <ReactLenis root options={{ autoRaf: false, lerp: 0.08, wheelMultiplier: 1 }} ref={lenisRef}></ReactLenis>
     </>
   );
 }

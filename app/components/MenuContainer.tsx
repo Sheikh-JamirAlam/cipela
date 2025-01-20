@@ -4,9 +4,9 @@ import { useAnimate, Segment } from "motion/react";
 import { useEffect, useState } from "react";
 import Menu from "./Menu";
 import { MenuToggle } from "./MenuToggle";
-import Lenis from "lenis";
+import type { LenisRef } from "lenis/react";
 
-function useMenuAnimation(isOpen: boolean, lenisRef: React.RefObject<Lenis | null>) {
+function useMenuAnimation(isOpen: boolean, lenisRef: React.RefObject<LenisRef | null>) {
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function useMenuAnimation(isOpen: boolean, lenisRef: React.RefObject<Lenis | nul
       ["path.bottom", { d: isOpen ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346" }, { at: "<" }],
       ...menuAnimations,
     ]);
-    const lenis = lenisRef.current;
+    const lenis = lenisRef.current?.lenis;
     if (isOpen) {
       lenis?.stop();
       document.body.style.overflow = "hidden";
@@ -35,7 +35,7 @@ function useMenuAnimation(isOpen: boolean, lenisRef: React.RefObject<Lenis | nul
   return scope;
 }
 
-export default function MenuContainer({ lenisRef }: { lenisRef: React.RefObject<Lenis | null> }) {
+export default function MenuContainer({ lenisRef }: { lenisRef: React.RefObject<LenisRef | null> }) {
   const [isOpen, setIsOpen] = useState(false);
   const scope = useMenuAnimation(isOpen, lenisRef);
 
